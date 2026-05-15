@@ -146,7 +146,7 @@ export default function AboutPage() {
               "
             >
             <Image
-              src="/images/profile.jpg"
+              src="/images/profile/profile4.png"
               alt="Profile photo"
               fill
               priority
