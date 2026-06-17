@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import ChromaGrid from "@/components/ChromaGrid";
 import { FaGithub, FaGlobe } from "react-icons/fa";
 import SplitText from "@/components/text/SplitText";
@@ -104,6 +105,11 @@ function ProjectCard({
   className?: string;
 }) {
   const accent = accentMap[project.accent];
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleCardClick = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   return (
     <div
@@ -116,6 +122,7 @@ function ProjectCard({
         ${accent.border} ${accent.shadow}
         ${className}
       `}
+      onClick={handleCardClick}
     >
       {/* Image */}
       <div className="relative h-52 overflow-hidden">
@@ -127,13 +134,14 @@ function ProjectCard({
 
         {/* Overlay */}
         <div
-          className="
+          className={`
             absolute inset-0 z-10
             bg-black/60 backdrop-blur-sm
-            opacity-0 group-hover:opacity-100
             transition-all duration-500
             flex items-center justify-center gap-4
-          "
+            opacity-0 group-hover:opacity-100
+            ${isExpanded ? 'opacity-100 sm:opacity-0' : ''}
+          `}
         >
           {/* Website */}
           {project.liveUrl && (
@@ -150,6 +158,7 @@ function ProjectCard({
                 hover:bg-cyan-400 hover:text-black
                 transition-all duration-300
                 hover:scale-110
+                active:scale-95
               "
             >
               <FaGlobe size={20} />
@@ -170,6 +179,7 @@ function ProjectCard({
               hover:bg-white hover:text-black
               transition-all duration-300
               hover:scale-110
+              active:scale-95
             "
           >
             <FaGithub size={20} />
@@ -214,6 +224,11 @@ function ProjectCard2({
   className?: string;
 }) {
   const accent = accentMap[project.accent];
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleCardClick = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   return (
     <div
@@ -226,6 +241,7 @@ function ProjectCard2({
         ${accent.border} ${accent.shadow}
         ${className}
       `}
+      onClick={handleCardClick}
     >
       {/* Image */}
       <div className="relative h-52 overflow-hidden">
@@ -237,13 +253,14 @@ function ProjectCard2({
 
         {/* Overlay */}
         <div
-          className="
+          className={`
             absolute inset-0 z-10
             bg-black/60 backdrop-blur-sm
-            opacity-0 group-hover:opacity-100
             transition-all duration-500
             flex items-center justify-center gap-4
-          "
+            opacity-0 group-hover:opacity-100
+            ${isExpanded ? 'opacity-100 sm:opacity-0' : ''}
+          `}
         >
           {/* Github */}
           <a
@@ -259,6 +276,7 @@ function ProjectCard2({
               hover:bg-white hover:text-black
               transition-all duration-300
               hover:scale-110
+              active:scale-95
             "
           >
             <FaGithub size={20} />

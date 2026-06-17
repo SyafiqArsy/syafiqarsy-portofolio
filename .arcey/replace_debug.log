@@ -1,0 +1,783 @@
+
+--- 2026-06-17T08:53:31.370Z ---
+PATH: app/page.tsx
+OLD_STR (normalized):
+      {/* ── HERO ─────────────────────────────────────────────────────────── */}
+      <section className="min-h-screen flex items-center justify-center px-6 md:px-16">
+NEW_STR (normalized):
+      {/* ── HERO ─────────────────────────────────────────────────────────── */}
+      <section className="min-h-screen flex items-center justify-center px-6 md:px-16 pt-20 md:pt-0">
+FILE_CONTENT (first 1000 chars, normalized):
+"use client";
+
+import Link from "next/link";
+import TiltedCard from "@/components/TiltedCard";
+import SplitText from "@/components/text/SplitText";
+import RotatingText from "@/components/text/RotatingText";
+import BlurText from "@/components/text/BlurText";
+import ScrollVelocity from "@/components/text/ScrollVelocity";
+import { useRef } from "react";
+import ShinyText from "@/components/text/ShinyText";
+import VariableProximity from "@/components/text/VariableProximity";
+import ChromaGrid from "@/components/ChromaGrid";
+import { FaGithub, FaGlobe } from "react-icons/fa";
+
+
+// ─── Project Data ────────────────────────────────────────────────────────────
+const projects = [
+  {
+    title: "Hana Haqia's Portofolio",
+    description:
+      "Full-stack portfolio website developed with Laravel and Tailwind CSS, designed with a modern interface and dynamic content management capabilities.",
+    image: "images/home/project1.png",
+    tags: ["Laravel", "Tailwind CSS", "MySQL"],
+    accent: "purpl
+FILE_LENGTH: 18690 chars
+OLD_STR_LENGTH: 169 chars
+HAS_CRLF_IN_FILE: no
+HAS_CRLF_IN_OLD: no
+
+
+--- 2026-06-17T08:57:21.402Z ---
+PATH: components/AnimatedList.tsx
+OLD_STR (normalized):
+  return (
+    <div className={`relative w-[500px] ${className}`}>
+NEW_STR (normalized):
+  return (
+    <div className={`relative w-full max-w-[500px] ${className}`}>
+FILE_CONTENT (first 1000 chars, normalized):
+import React, { useRef, useState, useEffect, useCallback, ReactNode, MouseEventHandler, UIEvent } from 'react';
+import { motion, useInView } from 'motion/react';
+
+interface AnimatedItemProps {
+  children: ReactNode;
+  delay?: number;
+  index: number;
+  onMouseEnter?: MouseEventHandler<HTMLDivElement>;
+  onClick?: MouseEventHandler<HTMLDivElement>;
+}
+
+const AnimatedItem: React.FC<AnimatedItemProps> = ({ children, delay = 0, index, onMouseEnter, onClick }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.5, once: false });
+  return (
+    <motion.div
+      ref={ref}
+      data-index={index}
+      onMouseEnter={onMouseEnter}
+      onClick={onClick}
+      initial={{ scale: 0.7, opacity: 0 }}
+      animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.7, opacity: 0 }}
+      transition={{ duration: 0.2, delay }}
+      className="mb-4 cursor-pointer"
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+interface AnimatedListProps {
+  items?: ReactNode
+FILE_LENGTH: 6081 chars
+OLD_STR_LENGTH: 66 chars
+HAS_CRLF_IN_FILE: no
+HAS_CRLF_IN_OLD: no
+
+
+--- 2026-06-17T08:57:47.305Z ---
+PATH: app/about/page.tsx
+OLD_STR (normalized):
+function ExperienceRow({ item }: { item: ExperienceItem }) {
+  return (
+    <div
+      className="
+        group relative overflow-hidden
+        flex items-center justify-between gap-6
+        border border-white/10
+        bg-gradient-to-br from-[#111922] to-[#0F1720]
+        py-5 px-5 rounded-3xl
+        transition-all duration-500
+        hover:-translate-y-1
+        hover:border-cyan-400/30
+        hover:shadow-[0_0_30px_rgba(34,211,238,0.12)]
+      "
+    >
+
+      {/* Glow */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-cyan-500/0 via-cyan-500/5 to-cyan-500/0" />
+
+      {/* Avatar + Text */}
+      <div className="relative z-10 flex items-center gap-5">
+
+        <div className="relative w-14 h-14 rounded-2xl overflow-hidden border border-white/10 shrink-0">
+          <Image
+            src={item.image}
+            alt={item.role}
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        <div className="flex flex-col gap-1">
+
+          <h3 className="text-lg font-semibold text-white transition-colors duration-300 group-hover:text-cyan-300">
+            {item.role}
+          </h3>
+
+          <p className="text-sm text-gray-500">
+            {item.company}
+          </p>
+
+        </div>
+      </div>
+
+      {/* Date */}
+      <div className="relative z-10">
+        <span className="
+          px-4 py-2 rounded-full
+          border border-cyan-400/20
+          bg-cyan-500/10
+          text-cyan-300 text-xs font-medium
+        ">
+          {item.date}
+        </span>
+      </div>
+
+    </div>
+  );
+}
+NEW_STR (normalized):
+function ExperienceRow({ item }: { item: ExperienceItem }) {
+  return (
+    <div
+      className="
+        group relative overflow-hidden
+        flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6
+        border border-white/10
+        bg-gradient-to-br from-[#111922] to-[#0F1720]
+        py-4 px-4 sm:py-5 sm:px-5 rounded-3xl
+        transition-all duration-500
+        hover:-translate-y-1
+        hover:border-cyan-400/30
+        hover:shadow-[0_0_30px_rgba(34,211,238,0.12)]
+      "
+    >
+
+      {/* Glow */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-cyan-500/0 via-cyan-500/5 to-cyan-500/0" />
+
+      {/* Avatar + Text */}
+      <div className="relative z-10 flex items-center gap-4 sm:gap-5">
+
+        <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden border border-white/10 shrink-0">
+          <Image
+            src={item.image}
+            alt={item.role}
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        <div className="flex flex-col gap-0.5 sm:gap-1">
+
+          <h3 className="text-sm sm:text-lg font-semibold text-white transition-colors duration-300 group-hover:text-cyan-300">
+            {item.role}
+          </h3>
+
+          <p className="text-xs sm:text-sm text-gray-500">
+            {item.company}
+          </p>
+
+        </div>
+      </div>
+
+      {/* Date */}
+      <div className="relative z-10 self-start sm:self-auto">
+        <span className="
+          px-3 py-1.5 sm:px-4 sm:py-2 rounded-full
+          border border-cyan-400/20
+          bg-cyan-500/10
+          text-cyan-300 text-[10px] sm:text-xs font-medium
+          whitespace-nowrap
+        ">
+          {item.date}
+        </span>
+      </div>
+
+    </div>
+  );
+}
+FILE_CONTENT (first 1000 chars, normalized):
+"use client";
+
+import Image from "next/image";
+import CircularText from "@/components/text/CircularText";
+import AnimatedList from "@/components/AnimatedList";
+import SplitText from "@/components/text/SplitText";
+import BlurText from "@/components/text/BlurText";
+import ShinyText from "@/components/text/ShinyText";  
+import { useRef } from "react";
+import VariableProximity from "@/components/text/VariableProximity";
+import Link from "next/link";
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+type ExperienceItem = {
+  role: string;
+  company: string;
+  date: string;
+  image: string;
+};
+
+type GalleryItem = {
+  image: string;
+  text: string;
+};
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
+
+const experienceItems: ExperienceItem[] = [
+  { role: "Backend Developer",  company: "Bulog Surakarta",  date: "Feb 2026 — July 2026" , image: "/images/about/bulog1.png"  },
+  { role: "System Analysis Teaching Assistant",      co
+FILE_LENGTH: 10015 chars
+OLD_STR_LENGTH: 1630 chars
+HAS_CRLF_IN_FILE: yes
+HAS_CRLF_IN_OLD: no
+
+
+--- 2026-06-17T09:05:32.008Z ---
+PATH: app/projects/page.tsx
+OLD_STR (normalized):
+"use client";
+
+import ChromaGrid from "@/components/ChromaGrid";
+import { FaGithub, FaGlobe } from "react-icons/fa";
+import SplitText from "@/components/text/SplitText";
+import BlurText from "@/components/text/BlurText";
+import ShinyText from "@/components/text/ShinyText";
+NEW_STR (normalized):
+"use client";
+
+import { useState } from "react";
+import ChromaGrid from "@/components/ChromaGrid";
+import { FaGithub, FaGlobe } from "react-icons/fa";
+import SplitText from "@/components/text/SplitText";
+import BlurText from "@/components/text/BlurText";
+import ShinyText from "@/components/text/ShinyText";
+FILE_CONTENT (first 1000 chars, normalized):
+"use client";
+
+import ChromaGrid from "@/components/ChromaGrid";
+import { FaGithub, FaGlobe } from "react-icons/fa";
+import SplitText from "@/components/text/SplitText";
+import BlurText from "@/components/text/BlurText";
+import ShinyText from "@/components/text/ShinyText";
+
+// ─── Project Data ────────────────────────────────────────────────────────────
+const projects = [
+  {
+    title: "Hana Haqia's Portofolio",
+    description:
+      "Full-stack portfolio website developed with Laravel and Tailwind CSS, designed with a modern interface and dynamic content management capabilities.",
+    image: "/images/home/project1.png",
+    tags: ["Laravel", "Tailwind CSS", "MySQL"],
+    accent: "purple",
+
+    liveUrl: "https://haqia-portofolio.page.gd",
+    githubUrl: "https://github.com/SyafiqArsy/hanahaqia-portofolio",
+  },
+  {
+    title: "Jetpack Fullblast",
+    description:
+      "Fast-paced 2D endless runner developed in Unity, combining responsive flight controls, combat mechanics, and dynami
+FILE_LENGTH: 11960 chars
+OLD_STR_LENGTH: 273 chars
+HAS_CRLF_IN_FILE: yes
+HAS_CRLF_IN_OLD: no
+
+
+--- 2026-06-17T09:05:51.214Z ---
+PATH: app/projects/page.tsx
+OLD_STR (normalized):
+// ─── Project Card ────────────────────────────────────────────────────────────
+function ProjectCard({
+  project,
+  className = "",
+}: {
+  project: (typeof projects)[number];
+  className?: string;
+}) {
+  const accent = accentMap[project.accent];
+
+  return (
+    <div
+      className={`
+        group relative overflow-hidden rounded-3xl cursor-pointer
+        border border-white/10
+        bg-gradient-to-br from-[#111922] to-[#0F1720]
+        transition-all duration-500
+        hover:-translate-y-2
+        ${accent.border} ${accent.shadow}
+        ${className}
+      `}
+    >
+      {/* Image */}
+      <div className="relative h-52 overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        {/* Overlay */}
+        <div
+          className="
+            absolute inset-0 z-10
+            bg-black/60 backdrop-blur-sm
+            opacity-0 group-hover:opacity-100
+            transition-all duration-500
+            flex items-center justify-center gap-4
+          "
+        >
+          {/* Website */}
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                w-14 h-14 rounded-full
+                border border-white/20
+                bg-white/10
+                backdrop-blur-md
+                flex items-center justify-center
+                hover:bg-cyan-400 hover:text-black
+                transition-all duration-300
+                hover:scale-110
+              "
+            >
+              <FaGlobe size={20} />
+            </a>
+          )}
+
+          {/* Github */}
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              w-14 h-14 rounded-full
+              border border-white/20
+              bg-white/10
+              backdrop-blur-md
+              flex items-center justify-center
+              hover:bg-white hover:text-black
+              transition-all duration-300
+              hover:scale-110
+            "
+          >
+            <FaGithub size={20} />
+          </a>
+        </div>
+
+        {/* Gradient */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#0d1620] via-[#0d1620]/40 to-transparent" />
+      </div>
+
+      {/* Content */}
+      <div className="p-7 flex flex-col gap-4">
+        <h3 className="text-xl font-bold tracking-tight">
+          {project.title}
+        </h3>
+
+        <p className="text-gray-400 text-sm leading-relaxed">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-2 pt-1">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className={`px-3 py-1 rounded-full border text-xs font-medium ${accent.tag}`}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+NEW_STR (normalized):
+// ─── Project Card ────────────────────────────────────────────────────────────
+function ProjectCard({
+  project,
+  className = "",
+}: {
+  project: (typeof projects)[number];
+  className?: string;
+}) {
+  const accent = accentMap[project.accent];
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleCardClick = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  return (
+    <div
+      className={`
+        group relative overflow-hidden rounded-3xl cursor-pointer
+        border border-white/10
+        bg-gradient-to-br from-[#111922] to-[#0F1720]
+        transition-all duration-500
+        hover:-translate-y-2
+        ${accent.border} ${accent.shadow}
+        ${className}
+      `}
+      onClick={handleCardClick}
+    >
+      {/* Image */}
+      <div className="relative h-52 overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        {/* Overlay */}
+        <div
+          className={`
+            absolute inset-0 z-10
+            bg-black/60 backdrop-blur-sm
+            transition-all duration-500
+            flex items-center justify-center gap-4
+            opacity-0 group-hover:opacity-100
+            ${isExpanded ? 'opacity-100 sm:opacity-0' : ''}
+          `}
+        >
+          {/* Website */}
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                w-14 h-14 rounded-full
+                border border-white/20
+                bg-white/10
+                backdrop-blur-md
+                flex items-center justify-center
+                hover:bg-cyan-400 hover:text-black
+                transition-all duration-300
+                hover:scale-110
+                active:scale-95
+              "
+            >
+              <FaGlobe size={20} />
+            </a>
+          )}
+
+          {/* Github */}
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              w-14 h-14 rounded-full
+              border border-white/20
+              bg-white/10
+              backdrop-blur-md
+              flex items-center justify-center
+              hover:bg-white hover:text-black
+              transition-all duration-300
+              hover:scale-110
+              active:scale-95
+            "
+          >
+            <FaGithub size={20} />
+          </a>
+        </div>
+
+        {/* Gradient */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#0d1620] via-[#0d1620]/40 to-transparent" />
+      </div>
+
+      {/* Content */}
+      <div className="p-7 flex flex-col gap-4">
+        <h3 className="text-xl font-bold tracking-tight">
+          {project.title}
+        </h3>
+
+        <p className="text-gray-400 text-sm leading-relaxed">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-2 pt-1">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className={`px-3 py-1 rounded-full border text-xs font-medium ${accent.tag}`}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+FILE_CONTENT (first 1000 chars, normalized):
+"use client";
+
+import { useState } from "react";
+import ChromaGrid from "@/components/ChromaGrid";
+import { FaGithub, FaGlobe } from "react-icons/fa";
+import SplitText from "@/components/text/SplitText";
+import BlurText from "@/components/text/BlurText";
+import ShinyText from "@/components/text/ShinyText";
+
+// ─── Project Data ────────────────────────────────────────────────────────────
+const projects = [
+  {
+    title: "Hana Haqia's Portofolio",
+    description:
+      "Full-stack portfolio website developed with Laravel and Tailwind CSS, designed with a modern interface and dynamic content management capabilities.",
+    image: "/images/home/project1.png",
+    tags: ["Laravel", "Tailwind CSS", "MySQL"],
+    accent: "purple",
+
+    liveUrl: "https://haqia-portofolio.page.gd",
+    githubUrl: "https://github.com/SyafiqArsy/hanahaqia-portofolio",
+  },
+  {
+    title: "Jetpack Fullblast",
+    description:
+      "Fast-paced 2D endless runner developed in Unity, combining responsive flight cont
+FILE_LENGTH: 11994 chars
+OLD_STR_LENGTH: 3076 chars
+HAS_CRLF_IN_FILE: no
+HAS_CRLF_IN_OLD: no
+
+
+--- 2026-06-17T09:06:07.935Z ---
+PATH: app/projects/page.tsx
+OLD_STR (normalized):
+// ─── Project Card 2 ──────────────────────────────────────────────────────────
+function ProjectCard2({
+  project,
+  className = "",
+}: {
+  project: (typeof projects)[number];
+  className?: string;
+}) {
+  const accent = accentMap[project.accent];
+
+  return (
+    <div
+      className={`
+        group relative overflow-hidden rounded-3xl cursor-pointer
+        border border-white/10
+        bg-gradient-to-br from-[#111922] to-[#0F1720]
+        transition-all duration-500
+        hover:-translate-y-2
+        ${accent.border} ${accent.shadow}
+        ${className}
+      `}
+    >
+      {/* Image */}
+      <div className="relative h-52 overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        {/* Overlay */}
+        <div
+          className="
+            absolute inset-0 z-10
+            bg-black/60 backdrop-blur-sm
+            opacity-0 group-hover:opacity-100
+            transition-all duration-500
+            flex items-center justify-center gap-4
+          "
+        >
+          {/* Github */}
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              w-14 h-14 rounded-full
+              border border-white/20
+              bg-white/10
+              backdrop-blur-md
+              flex items-center justify-center
+              hover:bg-white hover:text-black
+              transition-all duration-300
+              hover:scale-110
+            "
+          >
+            <FaGithub size={20} />
+          </a>
+        </div>
+
+        {/* Gradient */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#0d1620] via-[#0d1620]/40 to-transparent" />
+      </div>
+
+      {/* Content */}
+      <div className="p-7 flex flex-col gap-4">
+        <h3 className="text-xl font-bold tracking-tight">
+          {project.title}
+        </h3>
+
+        <p className="text-gray-400 text-sm leading-relaxed">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-2 pt-1">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className={`px-3 py-1 rounded-full border text-xs font-medium ${accent.tag}`}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+NEW_STR (normalized):
+// ─── Project Card 2 ──────────────────────────────────────────────────────────
+function ProjectCard2({
+  project,
+  className = "",
+}: {
+  project: (typeof projects)[number];
+  className?: string;
+}) {
+  const accent = accentMap[project.accent];
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleCardClick = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  return (
+    <div
+      className={`
+        group relative overflow-hidden rounded-3xl cursor-pointer
+        border border-white/10
+        bg-gradient-to-br from-[#111922] to-[#0F1720]
+        transition-all duration-500
+        hover:-translate-y-2
+        ${accent.border} ${accent.shadow}
+        ${className}
+      `}
+      onClick={handleCardClick}
+    >
+      {/* Image */}
+      <div className="relative h-52 overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        {/* Overlay */}
+        <div
+          className={`
+            absolute inset-0 z-10
+            bg-black/60 backdrop-blur-sm
+            transition-all duration-500
+            flex items-center justify-center gap-4
+            opacity-0 group-hover:opacity-100
+            ${isExpanded ? 'opacity-100 sm:opacity-0' : ''}
+          `}
+        >
+          {/* Github */}
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              w-14 h-14 rounded-full
+              border border-white/20
+              bg-white/10
+              backdrop-blur-md
+              flex items-center justify-center
+              hover:bg-white hover:text-black
+              transition-all duration-300
+              hover:scale-110
+              active:scale-95
+            "
+          >
+            <FaGithub size={20} />
+          </a>
+        </div>
+
+        {/* Gradient */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#0d1620] via-[#0d1620]/40 to-transparent" />
+      </div>
+
+      {/* Content */}
+      <div className="p-7 flex flex-col gap-4">
+        <h3 className="text-xl font-bold tracking-tight">
+          {project.title}
+        </h3>
+
+        <p className="text-gray-400 text-sm leading-relaxed">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-2 pt-1">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className={`px-3 py-1 rounded-full border text-xs font-medium ${accent.tag}`}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+FILE_CONTENT (first 1000 chars, normalized):
+"use client";
+
+import { useState } from "react";
+import ChromaGrid from "@/components/ChromaGrid";
+import { FaGithub, FaGlobe } from "react-icons/fa";
+import SplitText from "@/components/text/SplitText";
+import BlurText from "@/components/text/BlurText";
+import ShinyText from "@/components/text/ShinyText";
+
+// ─── Project Data ────────────────────────────────────────────────────────────
+const projects = [
+  {
+    title: "Hana Haqia's Portofolio",
+    description:
+      "Full-stack portfolio website developed with Laravel and Tailwind CSS, designed with a modern interface and dynamic content management capabilities.",
+    image: "/images/home/project1.png",
+    tags: ["Laravel", "Tailwind CSS", "MySQL"],
+    accent: "purple",
+
+    liveUrl: "https://haqia-portofolio.page.gd",
+    githubUrl: "https://github.com/SyafiqArsy/hanahaqia-portofolio",
+  },
+  {
+    title: "Jetpack Fullblast",
+    description:
+      "Fast-paced 2D endless runner developed in Unity, combining responsive flight cont
+FILE_LENGTH: 12277 chars
+OLD_STR_LENGTH: 2459 chars
+HAS_CRLF_IN_FILE: no
+HAS_CRLF_IN_OLD: no
+

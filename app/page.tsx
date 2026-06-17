@@ -277,7 +277,7 @@ export default function Home() {
     <main className="text-white overflow-x-hidden">
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="min-h-screen flex items-center justify-center px-6 md:px-16">
+      <section className="min-h-screen flex items-center justify-center px-6 md:px-16 pt-20 md:pt-0">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-7xl items-center">
 
           {/* Left */}

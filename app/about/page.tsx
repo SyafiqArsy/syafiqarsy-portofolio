@@ -59,10 +59,10 @@ function ExperienceRow({ item }: { item: ExperienceItem }) {
     <div
       className="
         group relative overflow-hidden
-        flex items-center justify-between gap-6
+        flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6
         border border-white/10
         bg-gradient-to-br from-[#111922] to-[#0F1720]
-        py-5 px-5 rounded-3xl
+        py-4 px-4 sm:py-5 sm:px-5 rounded-3xl
         transition-all duration-500
         hover:-translate-y-1
         hover:border-cyan-400/30
@@ -74,9 +74,9 @@ function ExperienceRow({ item }: { item: ExperienceItem }) {
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-cyan-500/0 via-cyan-500/5 to-cyan-500/0" />
 
       {/* Avatar + Text */}
-      <div className="relative z-10 flex items-center gap-5">
+      <div className="relative z-10 flex items-center gap-4 sm:gap-5">
 
-        <div className="relative w-14 h-14 rounded-2xl overflow-hidden border border-white/10 shrink-0">
+        <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden border border-white/10 shrink-0">
           <Image
             src={item.image}
             alt={item.role}
@@ -85,13 +85,13 @@ function ExperienceRow({ item }: { item: ExperienceItem }) {
           />
         </div>
 
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-0.5 sm:gap-1">
 
-          <h3 className="text-lg font-semibold text-white transition-colors duration-300 group-hover:text-cyan-300">
+          <h3 className="text-sm sm:text-lg font-semibold text-white transition-colors duration-300 group-hover:text-cyan-300">
             {item.role}
           </h3>
 
-          <p className="text-sm text-gray-500">
+          <p className="text-xs sm:text-sm text-gray-500">
             {item.company}
           </p>
 
@@ -99,12 +99,13 @@ function ExperienceRow({ item }: { item: ExperienceItem }) {
       </div>
 
       {/* Date */}
-      <div className="relative z-10">
+      <div className="relative z-10 self-start sm:self-auto">
         <span className="
-          px-4 py-2 rounded-full
+          px-3 py-1.5 sm:px-4 sm:py-2 rounded-full
           border border-cyan-400/20
           bg-cyan-500/10
-          text-cyan-300 text-xs font-medium
+          text-cyan-300 text-[10px] sm:text-xs font-medium
+          whitespace-nowrap
         ">
           {item.date}
         </span>
