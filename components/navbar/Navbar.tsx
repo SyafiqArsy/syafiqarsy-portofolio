@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import GooeyNav from "./GooeyNav";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "motion/react";
 
 const items = [
   { label: "Home", href: "/" },
@@ -46,12 +47,15 @@ export default function Navbar() {
       className={`
         fixed top-0 left-0 w-full z-50
         flex justify-center
-        transition-transform duration-500
+        transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
         ${showNavbar ? "translate-y-0" : "-translate-y-full"}
       `}
     >
       {/* Desktop Navbar */}
-      <div
+      <motion.div
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="
           hidden md:flex
           mt-4
@@ -65,10 +69,15 @@ export default function Navbar() {
         "
       >
         <GooeyNav items={items} />
-      </div>
+      </motion.div>
 
       {/* Mobile Navbar */}
-      <div className="md:hidden w-full px-4 pt-4">
+      <motion.div
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="md:hidden w-full px-4 pt-4"
+      >
         <div
           className="
             bg-black/30
@@ -76,52 +85,91 @@ export default function Navbar() {
             border border-white/10
             rounded-2xl
             shadow-[0_8px_30px_rgba(0,0,0,0.12)]
+            overflow-hidden
           "
         >
-          
           {/* Top Bar */}
           <div className="flex items-center justify-between px-4 py-3">
             <h1 className="text-sm font-medium text-white/90 tracking-wide">
               Syafiq
             </h1>
 
-            <button
+            <motion.button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="text-white"
+              whileTap={{ scale: 0.9 }}
+              className="text-white p-1"
             >
-              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              <AnimatePresence mode="wait">
+                {mobileOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X size={24} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu size={24} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
           </div>
 
           {/* Mobile Menu */}
-          <div
-            className={`
-              overflow-hidden transition-all duration-500
-              ${mobileOpen ? "max-h-96 pb-4" : "max-h-0"}
-            `}
-          >
-            <div className="flex flex-col px-4 gap-2">
-              {items.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="
-                    text-white/80
-                    hover:text-white
-                    hover:bg-white/10
-                    transition-all duration-300
-                    px-4 py-2.5 rounded-xl text-sm
-                  "
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
+          <AnimatePresence>
+            {mobileOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="overflow-hidden"
+              >
+                <div className="flex flex-col px-4 pb-4 gap-1">
+                  {items.map((item, index) => (
+                    <motion.div
+                      key={item.label}
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{
+                        duration: 0.3,
+                        delay: index * 0.08,
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                      }}
+                    >
+                      <Link
+                        href={item.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="
+                          block
+                          text-white/80
+                          hover:text-white
+                          hover:bg-white/10
+                          transition-all duration-300
+                          px-4 py-2.5 rounded-xl text-sm
+                        "
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
         </div>
-      </div>
+      </motion.div>
     </header>
   );
 }

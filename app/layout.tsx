@@ -6,6 +6,8 @@ import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import GlobalBackground from "@/components/background/GlobalBackground";
+import ScrollProgress from "@/components/animation/ScrollProgress";
+import CursorGlow from "@/components/animation/CursorGlow";
 
 const robotoFlex = Roboto_Flex({
   subsets: ["latin"],
@@ -38,6 +40,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${robotoFlex.variable} h-full antialiased`}
     >
       <body className="relative min-h-screen overflow-x-hidden">
+
+        {/* GLOBAL ANIMATIONS */}
+        <ScrollProgress />
+        <CursorGlow />
 
         {/* CLIENT BACKGROUND */}
         <GlobalBackground />

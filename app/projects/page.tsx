@@ -5,7 +5,9 @@ import ChromaGrid from "@/components/ChromaGrid";
 import { FaGithub, FaGlobe } from "react-icons/fa";
 import SplitText from "@/components/text/SplitText";
 import BlurText from "@/components/text/BlurText";
-import ShinyText from "@/components/text/ShinyText";
+import SectionReveal from "@/components/animation/SectionReveal";
+import StaggerChildren, { StaggerItem } from "@/components/animation/StaggerChildren";
+import { motion } from "motion/react";
 
 // ─── Project Data ────────────────────────────────────────────────────────────
 const projects = [
@@ -59,7 +61,7 @@ const projects = [
     description:
       "Responsive ticket booking platform developed with PHP Native, featuring dynamic pricing logic and efficient admin management capabilities.",
     image: "/images/home/project5.png",
-    tags: ["Laravel", "Javascript", "Bootstrap" ],
+    tags: ["Laravel", "Javascript", "Bootstrap"],
     accent: "purple",
 
     githubUrl: "https://github.com/SyafiqArsy/Odis-Tour",
@@ -112,13 +114,14 @@ function ProjectCard({
   };
 
   return (
-    <div
+    <motion.div
+      whileHover={{ y: -8, scale: 1.01 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className={`
         group relative overflow-hidden rounded-3xl cursor-pointer
         border border-white/10
         bg-gradient-to-br from-[#111922] to-[#0F1720]
-        transition-all duration-500
-        hover:-translate-y-2
+        transition-colors duration-500
         ${accent.border} ${accent.shadow}
         ${className}
       `}
@@ -140,7 +143,7 @@ function ProjectCard({
             transition-all duration-500
             flex items-center justify-center gap-4
             opacity-0 group-hover:opacity-100
-            ${isExpanded ? 'opacity-100 sm:opacity-0' : ''}
+            ${isExpanded ? "opacity-100 sm:opacity-0" : ""}
           `}
         >
           {/* Website */}
@@ -192,9 +195,7 @@ function ProjectCard({
 
       {/* Content */}
       <div className="p-7 flex flex-col gap-4">
-        <h3 className="text-xl font-bold tracking-tight">
-          {project.title}
-        </h3>
+        <h3 className="text-xl font-bold tracking-tight">{project.title}</h3>
 
         <p className="text-gray-400 text-sm leading-relaxed">
           {project.description}
@@ -211,7 +212,7 @@ function ProjectCard({
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -231,13 +232,14 @@ function ProjectCard2({
   };
 
   return (
-    <div
+    <motion.div
+      whileHover={{ y: -8, scale: 1.01 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className={`
         group relative overflow-hidden rounded-3xl cursor-pointer
         border border-white/10
         bg-gradient-to-br from-[#111922] to-[#0F1720]
-        transition-all duration-500
-        hover:-translate-y-2
+        transition-colors duration-500
         ${accent.border} ${accent.shadow}
         ${className}
       `}
@@ -259,7 +261,7 @@ function ProjectCard2({
             transition-all duration-500
             flex items-center justify-center gap-4
             opacity-0 group-hover:opacity-100
-            ${isExpanded ? 'opacity-100 sm:opacity-0' : ''}
+            ${isExpanded ? "opacity-100 sm:opacity-0" : ""}
           `}
         >
           {/* Github */}
@@ -289,9 +291,7 @@ function ProjectCard2({
 
       {/* Content */}
       <div className="p-7 flex flex-col gap-4">
-        <h3 className="text-xl font-bold tracking-tight">
-          {project.title}
-        </h3>
+        <h3 className="text-xl font-bold tracking-tight">{project.title}</h3>
 
         <p className="text-gray-400 text-sm leading-relaxed">
           {project.description}
@@ -308,7 +308,7 @@ function ProjectCard2({
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -322,8 +322,16 @@ export default function ProjectsPage() {
 
         {/* Ambient Glow */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-
-          <div
+          <motion.div
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
             className="
               absolute top-1/2 left-1/2
               -translate-x-1/2 -translate-y-1/2
@@ -332,13 +340,15 @@ export default function ProjectsPage() {
               rounded-full
               bg-cyan-400/10
               blur-3xl
-              opacity-40
             "
           />
-
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col gap-8 text-center items-center">
+
+          <span className="text-cyan-400 uppercase tracking-[0.3em] text-xs font-medium">
+            Portfolio
+          </span>
 
           <SplitText
             text="Featured Projects"
@@ -353,7 +363,7 @@ export default function ProjectsPage() {
           />
 
           <BlurText
-            text="A collection of projects I’ve built through exploration, problem solving, and continuous learning in technology."
+            text="A collection of projects I've built through exploration, problem solving, and continuous learning in technology."
             delay={60}
             animateBy="words"
             direction="top"
@@ -370,39 +380,41 @@ export default function ProjectsPage() {
         <div className="max-w-7xl mx-auto">
 
           <ChromaGrid className="rounded-[40px] bg-transparent">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-14">
-
-              {/* ====================================================== */}
-              {/* ================= PERULANGAN CARD ==================== */}
-              {/* ====================================================== */}
-
+            <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 gap-10 py-14" staggerDelay={0.12} delay={0.1}>
               {projects.map((project, index) => (
-                <div
-                  key={project.title}
-                  className={`
-                    flex flex-col gap-8
-                    ${index % 2 === 0
-                      ? "md:-translate-y-10"
-                      : "md:translate-y-10"}
-                  `}
-                >
-                  {index === projects.length - 1 ? (
-                    <ProjectCard2 project={project} />
-                  ) : (
-                    <ProjectCard project={project} />
-                  )}
-                </div>
+                <StaggerItem key={project.title}>
+                  <div
+                    className={`
+                      flex flex-col gap-8
+                      ${index % 2 === 0
+                        ? "md:-translate-y-10"
+                        : "md:translate-y-10"}
+                    `}
+                  >
+                    {index === projects.length - 1 ? (
+                      <ProjectCard2 project={project} />
+                    ) : (
+                      <ProjectCard project={project} />
+                    )}
+                  </div>
+                </StaggerItem>
               ))}
-
-              {/* ====================================================== */}
-              {/* ================= END PERULANGAN CARD ================ */}
-              {/* ====================================================== */}
-
-            </div>
+            </StaggerChildren>
           </ChromaGrid>
 
         </div>
       </section>
+
+      {/* ── DIVIDER ────────────────────────────────────────────────── */}
+      <div className="flex justify-center py-8">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: 120 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent"
+        />
+      </div>
 
     </main>
   );
