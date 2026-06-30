@@ -23,6 +23,7 @@ import {
   SiVuedotjs,
   SiReact,
   SiNextdotjs,
+  SiNestjs,
   SiNodedotjs,
   SiTailwindcss,
   SiMysql,
@@ -30,7 +31,6 @@ import {
   SiGit,
   SiDocker,
   SiLinux,
-  SiFirebase,
 } from "react-icons/si";
 import { MdApi } from "react-icons/md";
 
@@ -565,6 +565,7 @@ export default function Home() {
               { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
               { name: "React", icon: SiReact, color: "#61DAFB" },
               { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
+              { name: "NestJS", icon: SiNestjs, color: "#E0234E" },
               { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
               { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
               { name: "MySQL", icon: SiMysql, color: "#4479A1" },
@@ -573,7 +574,6 @@ export default function Home() {
               { name: "Docker", icon: SiDocker, color: "#2496ED" },
               { name: "Linux", icon: SiLinux, color: "#FCC624" },
               { name: "REST API", icon: MdApi, color: "#00BCD4" },
-              { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
             ].map(({ name, icon: Icon, color }) => (
               <StaggerItem key={name}>
                 <motion.div
