@@ -37,15 +37,36 @@ import { MdApi } from "react-icons/md";
 
 // ─── Project Data ────────────────────────────────────────────────────────────
 const projects = [
+    {
+    title: "Seventh Sky Style",
+    description:
+      "Full-stack AI fashion recommendation platform developed with Next.js, NestJS, FastAPI, and PostgreSQL, featuring personalized outfit recommendations, AI-powered fashion analysis, explainable recommendations, and a responsive modern user interface.",
+    image: "/images/home/projectseventhskystyle.png",
+    tags: ["NestJS", "Next.js", "PostgreSQL"],
+    accent: "sky",
+
+    githubUrl: "https://github.com/SyafiqArsy/seventh-sky-style",
+  },    
+  {
+    title: "Seventh Sky Store",
+    description:
+      "Full-stack e-commerce website developed with Laravel, Next.js, and Tailwind CSS, featuring secure authentication, online payment integration, order management, and a responsive modern user interface.",
+    image: "/images/home/projectseventhskystore.png",
+    tags: ["Laravel", "Next.js", "PostgreSQL"],
+    accent: "emerald",
+
+    liveUrl: "https://seventh-sky-store.vercel.app/",
+    githubUrl: "https://github.com/SyafiqArsy/sevenths-sky-store",
+  },
   {
     title: "Hana Haqia's Portofolio",
     description:
       "Full-stack portfolio website developed with Laravel and Tailwind CSS, designed with a modern interface and dynamic content management capabilities.",
-    image: "images/home/project1.png",
+    image: "/images/home/project1.png",
     tags: ["Laravel", "Tailwind CSS", "MySQL"],
     accent: "purple",
 
-    liveUrl: "haqia-portofolio.page.gd",
+    liveUrl: "https://hanahaqia-portofolio.page.gd",
     githubUrl: "https://github.com/SyafiqArsy/hanahaqia-portofolio",
   },
   {
@@ -610,14 +631,14 @@ export default function Home() {
 
               {/* Left column — offset upward on desktop */}
               <StaggerChildren className="flex flex-col gap-8 md:-translate-y-10" staggerDelay={0.15} delay={0.1}>
-                <StaggerItem><ProjectCard project={projects[0]} /></StaggerItem>
-                <StaggerItem><ProjectCard2 project={projects[1]} /></StaggerItem>
+                <StaggerItem><ProjectCard2 project={projects[0]} /></StaggerItem>
+                <StaggerItem><ProjectCard project={projects[1]} /></StaggerItem>
               </StaggerChildren>
 
               {/* Right column — offset downward on desktop */}
               <StaggerChildren className="flex flex-col gap-8 md:translate-y-10" staggerDelay={0.15} delay={0.25}>
-                <StaggerItem><ProjectCard2 project={projects[2]} /></StaggerItem>
-                <StaggerItem><ProjectCard project={projects[3]} /></StaggerItem>
+                <StaggerItem><ProjectCard project={projects[2]} /></StaggerItem>
+                <StaggerItem><ProjectCard2 project={projects[3]} /></StaggerItem>
               </StaggerChildren>
 
             </div>

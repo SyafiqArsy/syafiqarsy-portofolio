@@ -11,6 +11,27 @@ import { motion } from "motion/react";
 
 // ─── Project Data ────────────────────────────────────────────────────────────
 const projects = [
+    {
+    title: "Seventh Sky Style",
+    description:
+      "Full-stack AI fashion recommendation platform developed with Next.js, NestJS, FastAPI, and PostgreSQL, featuring personalized outfit recommendations, AI-powered fashion analysis, explainable recommendations, and a responsive modern user interface.",
+    image: "/images/home/projectseventhskystyle.png",
+    tags: ["NestJS", "Next.js", "PostgreSQL"],
+    accent: "sky",
+
+    githubUrl: "https://github.com/SyafiqArsy/seventh-sky-style",
+  },    
+  {
+    title: "Seventh Sky Store",
+    description:
+      "Full-stack e-commerce website developed with Laravel, Next.js, and Tailwind CSS, featuring secure authentication, online payment integration, order management, and a responsive modern user interface.",
+    image: "/images/home/projectseventhskystore.png",
+    tags: ["Laravel", "Next.js", "PostgreSQL"],
+    accent: "emerald",
+
+    liveUrl: "https://seventh-sky-store.vercel.app/",
+    githubUrl: "https://github.com/SyafiqArsy/sevenths-sky-store",
+  },
   {
     title: "Hana Haqia's Portofolio",
     description:
@@ -19,7 +40,7 @@ const projects = [
     tags: ["Laravel", "Tailwind CSS", "MySQL"],
     accent: "purple",
 
-    liveUrl: "https://haqia-portofolio.page.gd",
+    liveUrl: "https://hanahaqia-portofolio.page.gd",
     githubUrl: "https://github.com/SyafiqArsy/hanahaqia-portofolio",
   },
   {
